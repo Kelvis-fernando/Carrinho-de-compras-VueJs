@@ -1,14 +1,31 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Login from './components/auth/Login'
+
+import SideAuth from './template/SideAuth'
+import Login from './auth/Login'
 
 Vue.use(VueRouter)
 
-const router = new VueRouter({
+export default new VueRouter({
     mode: 'history',
     routes: [{
-        // dynamic segments start with a colon
-        path: '/',
-        component: Login
-    }]
+            path: '/',
+            component: Login
+        },
+        /* AUTH */
+        {
+            name: 'auth',
+            path: '/auth',
+            component: SideAuth,
+            children: [
+                /* LOGIN */
+                {
+                    name: 'login',
+                    path: 'login',
+                    component: Login,
+                },
+
+            ],
+        },
+    ]
 })

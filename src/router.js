@@ -1,31 +1,36 @@
 import Vue from 'vue'
-import VueRouter from 'vue-router'
+import router from 'vue-router'
 
-import SideAuth from './template/SideAuth'
+// import SideAuth from './template/SideAuth'
 import Login from './auth/Login'
 
-Vue.use(VueRouter)
+Vue.use(router)
 
-export default new VueRouter({
+export default new router({
     mode: 'history',
     routes: [{
+            name: 'default',
             path: '/',
-            component: Login
+            component: Login,
+            meta: {
+                guest: true,
+                public: true,
+            },
         },
         /* AUTH */
-        {
-            name: 'auth',
-            path: '/auth',
-            component: SideAuth,
-            children: [
-                /* LOGIN */
-                {
-                    name: 'login',
-                    path: 'login',
-                    component: Login,
-                },
+        // {
+        //     name: 'auth',
+        //     path: '/auth',
+        //     component: SideAuth,
+        //     children: [
+        //         /* LOGIN */
+        //         {
+        //             name: 'login',
+        //             path: 'login',
+        //             component: Login,
+        //         },
 
-            ],
-        },
+        //     ],
+        // },
     ]
 })

@@ -36,25 +36,23 @@
             class="mb-3 w-50"
             :aria-describedby="ariaDescribedby"
           >
-            <b-form-checkbox value="me"> Mantenha-me Conectado</b-form-checkbox>
+            <b-form-checkbox value="me">Mantenha-me Conectado</b-form-checkbox>
           </b-form-checkbox-group>
         </b-form-group>
 
         <b-button type="submit" variant="primary" class="logar">Entrar</b-button>
       </b-form>
-      <p class="cadastro">Ainda não tem uma conta? <router-link to="/auth/cadastro" class="link">Cadastre-se</router-link></p>
+      <p class="cadastro">Ainda não tem uma conta? <router-link to="/register" class="link">Cadastre-se</router-link></p>
     </div>
-    <div id="banner-side" class="grid-template-columns-1">
-      <div>
-        <h1 class="title-banner-side">O melhor registro de caixa</h1>
-        <p class="subtitle-banner-side">Deixa que enquanto você cuida do seu negocio, nós fazemos o controle por você</p>
-      </div>
-    </div>
+    <SideAuth />
   </div>
 </template>
 
 <script>
+import SideAuth from '@/components/auth/SideAuth'
+
 export default {
+  components: {SideAuth},
     data() {
       return {
         form: {
@@ -101,9 +99,9 @@ export default {
   width: 80%;
 }
 
-/* #login-side {
-  width: 70%;
-} */
+#login-side {
+  position: absolute;
+}
 
 .logo {
   width: 200px;
@@ -140,16 +138,5 @@ export default {
 .link:hover {
   border-bottom: 1px solid rgb(129, 128, 128);
   color: rgb(71, 71, 71);
-}
-
-/* Banner side */
-#banner-side {
-  padding: 100px 60px 0px;
-  position: absolute;
-  margin-left: 820px;
-  width: 40%;
-  height: 100vh;
-  background-color: #679890;
-  color: #fff;
 }
 </style>

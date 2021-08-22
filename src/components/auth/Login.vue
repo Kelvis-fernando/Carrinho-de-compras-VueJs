@@ -10,7 +10,7 @@
         <b-form-group id="email" label="E-mail">
           <b-form-input
             id="email"
-            class="mb-3 w-50"
+            class="mb-3 w-100"
             v-model="form.email"
             type="email"
             placeholder="Exemplo@exemplo.com.br *"
@@ -21,23 +21,12 @@
         <b-form-group id="senha" label="Senha">
           <b-form-input
             id="senha"
-            class="mb-3 w-50"
+            class="mb-3 w-100"
             v-model="form.name"
             type="password"
             placeholder="Senha *"
             required
           ></b-form-input>
-        </b-form-group>
-
-        <b-form-group id="remember" v-slot="{ ariaDescribedby }">
-          <b-form-checkbox-group
-            v-model="form.checked"
-            id="remember"
-            class="mb-3 w-50"
-            :aria-describedby="ariaDescribedby"
-          >
-            <b-form-checkbox value="me">Mantenha-me Conectado</b-form-checkbox>
-          </b-form-checkbox-group>
         </b-form-group>
 
         <b-button type="submit" variant="primary" class="logar">Entrar</b-button>
@@ -117,7 +106,7 @@ export default {
 }
 
 .form {
-  padding: 40px 100px 60px;
+  padding: 40px 80px 60px;
 }
 
 .logar {
@@ -125,7 +114,6 @@ export default {
 }
 
 .cadastro {
-  margin: 20px 190px 0px;
   width: 100%;
 }
 

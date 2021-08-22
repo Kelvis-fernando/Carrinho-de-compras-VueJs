@@ -5,6 +5,9 @@
                 <h1 class="title-banner-side">O melhor registro de caixa</h1>
                 <p class="subtitle-banner-side">Deixa que enquanto você cuida do seu negocio, nós fazemos o controle por você</p>
             </div>
+            <div class="banner">
+                <img src="@/assets/login-assets/food-removebg-preview.png" alt="Food">
+            </div>
         </div>
     </div>
 </template>
@@ -28,5 +31,14 @@
   height: 100vh;
   background-color: #679890;
   color: #fff;
+}
+
+.banner {
+    position: absolute;
+    margin: 0px -30px 10px;
+}
+
+.banner img {
+    width: 520px;
 }
 </style>

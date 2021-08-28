@@ -1,7 +1,8 @@
 <template>
   <div id="register" class="grid">
     <div id="register-side" class="grid-template-columns-1">
-      <b-form @submit="onSubmit" @reset="onReset" class="form mt-5">
+      <b-alert show dismissible v-for="mensagem in mensagens" :key="mensagem.texto" :variant="mensagem.tipo">{{ mensagem.texto }}</b-alert>
+      <b-form class="form mt-5">
         <div>
           <img src="@/assets/logo.svg" alt="logo" class="logo" />
           <h1 class="titulo">Registre-se</h1>
@@ -12,6 +13,7 @@
             <b-form-input
               id="nome"
               class="mb-3"
+              v-model="usuarios.nome"
               type="text"
               placeholder="Exemplo*"
               required
@@ -21,6 +23,7 @@
             <b-form-input
               id="sobrenome"
               class="mb-3"
+              v-model="usuarios.sobrenome"
               type="text"
               placeholder="Exemplo*"
               required
@@ -31,7 +34,7 @@
           <b-form-input
             id="email"
             class="mb-3 w-100"
-            v-model="form.email"
+            v-model="usuarios.email"
             type="email"
             placeholder="Exemplo@exemplo.com.br *"
             required
@@ -42,27 +45,16 @@
           <b-form-input
             id="senha"
             class="mb-3 w-100"
-            v-model="form.name"
+            v-model="usuarios.name"
             type="password"
             placeholder="Senha *"
             required
           ></b-form-input>
         </b-form-group>
 
-        <b-form-group id="c-senha" label="Confirme a Senha">
-          <b-form-input
-            id="senha"
-            class="mb-3 w-100"
-            v-model="form.name"
-            type="password"
-            placeholder="Confirme a Senha *"
-            required
-          ></b-form-input>
-        </b-form-group>
-
         <b-form-group id="remember" v-slot="{ ariaDescribedby }">
           <b-form-checkbox-group
-            v-model="form.checked"
+            v-model="usuarios.checked"
             id="remember"
             class="mb-3 w-100"
             :aria-describedby="ariaDescribedby"
@@ -73,8 +65,8 @@
           </b-form-checkbox-group>
         </b-form-group>
 
-        <b-button type="submit" variant="primary" class="cadastrar"
-          >Cadastrar</b-button
+        <b-button @click="registrar" type="submit" variant="primary" class="cadastrar"
+          style="background: #679890; border: none;">Cadastrar</b-button
         >
       </b-form>
     </div>
@@ -89,7 +81,8 @@ export default {
   components: { SideAuth },
   data() {
     return {
-      form: {
+      mensagens: [],
+      usuarios: {
         email: "",
         name: "",
         food: null,
@@ -98,23 +91,22 @@ export default {
     };
   },
   methods: {
-    onSubmit(event) {
-      event.preventDefault();
-      alert(JSON.stringify(this.form));
+    registrar() {
+      this.$http.post(`cadastro.json`, this.usuarios)
+        .then(() => {
+          this.limpar()
+					this.mensagens.push({
+						texto: 'Operação realizada com sucesso',
+						tipo: 'success'
+					})
+        })
     },
-    onReset(event) {
-      event.preventDefault();
-      // Reset our form values
-      this.form.email = "";
-      this.form.name = "";
-      this.form.food = null;
-      this.form.checked = [];
-      // Trick to reset/clear native browser form validation state
-      this.show = false;
-      this.$nextTick(() => {
-        this.show = true;
-      });
-    },
+    limpar() {
+      this.usuarios.nome = ''
+      this.usuarios.sobrenome = ''
+      this.usuarios.email = ''
+      this.usuarios.senha = ''
+    }
   },
 };
 </script>

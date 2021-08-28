@@ -29,7 +29,7 @@
           ></b-form-input>
         </b-form-group>
 
-        <b-button type="submit" variant="primary" class="logar">Entrar</b-button>
+        <b-button type="submit" class="logar" style="background: #679890; border: none;" >Entrar</b-button>
       </b-form>
       <p class="cadastro">Ainda não tem uma conta? <router-link to="/register" class="link">Cadastre-se</router-link></p>
     </div>
@@ -89,12 +89,13 @@ export default {
 }
 
 #login-side {
+  margin-top: 80px;
   position: absolute;
 }
 
 .logo {
   width: 200px;
-  padding-bottom: 30px;
+  padding-bottom: 50px;
 }
 
 .titulo {

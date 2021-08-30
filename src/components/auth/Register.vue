@@ -1,8 +1,10 @@
 <template>
   <div id="register" class="grid">
     <div id="register-side" class="grid-template-columns-1">
-      <b-alert show dismissible v-for="mensagem in mensagens" :key="mensagem.texto" :variant="mensagem.tipo">{{ mensagem.texto }}</b-alert>
       <b-form class="form mt-5">
+        <b-alert show dismissible v-for="mensagem in mensagens" 
+        :key="mensagem.texto"
+        :variant="mensagem.tipo">{{ mensagem.texto }}</b-alert>
         <div>
           <img src="@/assets/logo.svg" alt="logo" class="logo" />
           <h1 class="titulo">Registre-se</h1>
@@ -13,7 +15,7 @@
             <b-form-input
               id="nome"
               class="mb-3"
-              v-model="usuarios.nome"
+              v-model="nome"
               type="text"
               placeholder="Exemplo*"
               required
@@ -23,7 +25,7 @@
             <b-form-input
               id="sobrenome"
               class="mb-3"
-              v-model="usuarios.sobrenome"
+              v-model="sobrenome"
               type="text"
               placeholder="Exemplo*"
               required
@@ -34,7 +36,7 @@
           <b-form-input
             id="email"
             class="mb-3 w-100"
-            v-model="usuarios.email"
+            v-model="email"
             type="email"
             placeholder="Exemplo@exemplo.com.br *"
             required
@@ -45,27 +47,14 @@
           <b-form-input
             id="senha"
             class="mb-3 w-100"
-            v-model="usuarios.name"
+            v-model="senha"
             type="password"
             placeholder="Senha *"
             required
           ></b-form-input>
         </b-form-group>
 
-        <b-form-group id="remember" v-slot="{ ariaDescribedby }">
-          <b-form-checkbox-group
-            v-model="usuarios.checked"
-            id="remember"
-            class="mb-3 w-100"
-            :aria-describedby="ariaDescribedby"
-          >
-            <b-form-checkbox value="me"
-              >Aceito os termos de privacidade</b-form-checkbox
-            >
-          </b-form-checkbox-group>
-        </b-form-group>
-
-        <b-button @click="registrar" type="submit" variant="primary" class="cadastrar"
+        <b-button @click="signUp" type="submit" variant="primary" class="cadastrar"
           style="background: #679890; border: none;">Cadastrar</b-button
         >
       </b-form>
@@ -76,37 +65,50 @@
 
 <script>
 import SideAuth from "@/components/auth/SideAuth";
+import "firebase/auth";
+import "firebase/firestore";
+import "firebase/analytics";
+import firebase from "firebase/app";
 
 export default {
   components: { SideAuth },
   data() {
     return {
       mensagens: [],
-      usuarios: {
-        email: "",
-        name: "",
-        food: null,
-        checked: [],
-      },
     };
   },
   methods: {
-    registrar() {
-      this.$http.post(`cadastro.json`, this.usuarios)
-        .then(() => {
-          this.limpar()
-					this.mensagens.push({
-						texto: 'Operação realizada com sucesso',
-						tipo: 'success'
-					})
+    // registrar() {
+    //   this.$http.post(`cadastro.json`, this.usuarios)
+    //     .then(() => {
+    //       this.limpar()
+		// 			this.mensagens.push({
+		// 				texto: 'Operação realizada com sucesso',
+		// 				tipo: 'success'
+		// 			})
+    //     })
+    // },
+    signUp() {
+      let email = document.getElementById('email')
+      let senha = document.getElementById('senha')
+      // let nome = document.getElementById('nome')
+      // let sobrenome = document.getElementById('sobrenome')
+      
+      firebase.auth().createUserWithEmailAndPassword(email, senha)
+        .then((userCredential) => {
+          // Signed in
+          var user = userCredential.user;
+          console.log(user)
+          // ...
         })
+        .catch((error) => {
+          var errorCode = error.code;
+          var errorMessage = error.message;
+          console.log(errorCode)
+          console.log(errorMessage)
+          // ..
+        });
     },
-    limpar() {
-      this.usuarios.nome = ''
-      this.usuarios.sobrenome = ''
-      this.usuarios.email = ''
-      this.usuarios.senha = ''
-    }
   },
 };
 </script>

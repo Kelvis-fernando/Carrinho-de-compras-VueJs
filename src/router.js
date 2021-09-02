@@ -4,6 +4,7 @@ import router from 'vue-router'
 import Login from '@/components/auth/Login'
 import Register from '@/components/auth/Register'
 import Products from '@/views/cart/Products'
+import InsertItens from '@/views/insert-itens/AddItens'
 
 Vue.use(router)
 
@@ -18,8 +19,12 @@ export default new router({
             component: Register
         },
         {
-            path: '/products',
+            path: '/produtos',
             component: Products
+        },
+        {
+            path: '/adicionar',
+            component: InsertItens
         }
     ]
 })

@@ -79,7 +79,7 @@ export default {
   },
   methods: {
     // registrar() {
-    //   this.$http.post(`cadastro.json`, this.usuarios)
+    //   this.$http.post(`cadastro.json`, this.itens)
     //     .then(() => {
     //       this.limpar()
 		// 			this.mensagens.push({

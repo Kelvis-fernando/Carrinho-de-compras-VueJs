@@ -1,7 +1,7 @@
 <template>
   <div id="products">
     <div class="d-flex flex-row-reverse">
-        <b-button v-b-toggle.sidebar-right class="d-flex flex-row-reverse mx-5 mt-5">Cart</b-button>
+        <b-button v-b-toggle.sidebar-right class="d-flex flex-row-reverse mx-5 mt-5"><b-icon icon="cart" aria-hidden="true"></b-icon></b-button>
         <b-sidebar id="sidebar-right" right shadow>
             <div>
                 <b-table :items="items"></b-table>

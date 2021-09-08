@@ -1,12 +1,14 @@
 <template>
 <div id="itens">
-    <div class="card" style="width: 14rem; margin: 40px;">
+    <button @click="getProducts" class="btn1" style="background-color: #679890; color: #fff">Carregar Itens</button> <br>
+    <div class="card"></div>
+    <div class="card" style="width: 14rem; margin: 80px;" v-for="(item, id) in itens" :key="id">
         <img src="@/assets/Itens/default.jpg" class="card-img-top" alt="Produtos">
         <div class="card-body">
-            <h5 class="card-title text-center">{{produto}}</h5>
-            <p class="card-text text-center">{{ categoria }}</p>
-            <p class="card-text text-center">R$: {{ valor }}</p>
-            <a href="#" class="btn" style="background-color: #679890; color: #fff">Adicionar</a>
+            <h5 class="card-title text-center">{{item.produto}}</h5>
+            <p class="card-text text-center">{{ item.categoria }}</p>
+            <p class="card-text text-center">R$: {{ item.valor }}</p>
+            <button class="btn" style="background-color: #679890; color: #fff">Adicionar</button>
         </div>
     </div>
 </div>
@@ -17,10 +19,31 @@
 export default {
     data() {
         return {
-            produto: 'Bala',
-            categoria: 'Doce',
-            valor: 2.50
+            itens: [],
+            id: null,
+            item: {
+                produto: '',
+                categoria: '',
+                valor: 0
+            }
         }
+    },
+    methods: {
+        getProducts() {
+            this.$http.get(`itens.json`)
+                .then(resp => {
+                    this.itens = resp.data
+                    console.log(this.itens)
+                })
+                .then(alert('Item recebido'))
+        },
+        obterUsuarios() {
+			this.$http.get('usuarios.json')
+				.then(resp => {
+					this.usuarios = resp.data
+					console.log(this.usuarios)
+				})
+		}
     }
 }
 </script>
@@ -32,7 +55,15 @@ export default {
         flex-wrap: wrap;
     }
 
-    .btn {
+    .btn1 {
+        display: flex;
+        align-content: center;
+        justify-content: center;
+        position: absolute;
+        margin-left: 20px;
+    }
+
+        .btn {
         display: flex;
         align-content: center;
         justify-content: center;

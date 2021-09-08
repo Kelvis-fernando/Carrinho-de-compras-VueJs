@@ -31,9 +31,19 @@
         ></b-form-input>
       </b-form-group>
 
-      <div>
-        <b-form-select v-model="this.itens.categoria" :options="this.itens.categoria"></b-form-select>
-      </div>
+      <b-form-group
+        id="categoria"
+        label="Categoria"
+      >
+        <b-form-input
+          id="categoria"
+          type="text"
+          placeholder="Bebida*"
+          required
+          class="w-25"
+          v-model="itens.categoria"
+        ></b-form-input>
+      </b-form-group>
 
       <b-button @click="enviar" type="submit" class="my-3" style="background-color: #679890; color: #fff; border: none;">Adicionar</b-button>
     </b-form>
@@ -47,7 +57,7 @@ export default {
       itens: {
         produto: '',
         valor: 0,
-        categoria: ['Comidas','Doces', 'Lanches', 'Bebidas', 'Categorias']
+        categoria: ''
       }
     }
   },

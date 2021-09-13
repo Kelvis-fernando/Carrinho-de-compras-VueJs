@@ -1,14 +1,15 @@
 <template>
 <div id="itens">
-    <button @click="getProducts" class="btn1" style="background-color: #679890; color: #fff">Carregar Itens</button> <br>
+    <button @click="getProducts" class="btn1 btn" style="background-color: #679890; color: #fff">Carregar Itens</button> <br>
+    <router-link class=" btn1 btn add-new-item" style="background-color: #679890; color: #fff" to="/adicionar">Adicionar Item +</router-link> <br>
     <div class="card"></div>
-    <div class="card" style="width: 14rem; margin: 80px;" v-for="(item, id) in itens" :key="id">
+    <div class="card adjust-card" v-for="(item, id) in itens" :key="id">
         <img src="@/assets/Itens/default.jpg" class="card-img-top" alt="Produtos">
         <div class="card-body">
             <h5 class="card-title text-center">{{item.produto}}</h5>
             <p class="card-text text-center">{{ item.categoria }}</p>
             <p class="card-text text-center">R$: {{ item.valor }}</p>
-            <button class="btn" style="background-color: #679890; color: #fff">Adicionar</button>
+            <button class="btn" style="background-color: #679890; color: #fff;">Adicionar</button>
         </div>
     </div>
 </div>
@@ -63,9 +64,18 @@ export default {
         margin-left: 20px;
     }
 
-        .btn {
+    .btn {
         display: flex;
         align-content: center;
         justify-content: center;
+    }
+
+    .adjust-card {
+        width: 14rem;
+        margin: 80px;
+    }
+
+    .add-new-item {
+        margin-left: 150px;
     }
 </style>

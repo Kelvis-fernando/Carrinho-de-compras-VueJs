@@ -9,7 +9,7 @@
             <h5 class="card-title text-center">{{item.produto}}</h5>
             <p class="card-text text-center">{{ item.categoria }}</p>
             <p class="card-text text-center">R$: {{ item.valor }}</p>
-            <button class="btn" style="background-color: #679890; color: #fff;">Adicionar</button>
+            <button @click="addProducts(item)" class="btn" style="background-color: #679890; color: #fff;">Adicionar</button>
         </div>
     </div>
 </div>
@@ -17,11 +17,13 @@
 </template>
 
 <script>
+
 export default {
     data() {
         return {
             itens: [],
             id: null,
+            qtd: 0,
             item: {
                 produto: '',
                 categoria: '',
@@ -44,7 +46,10 @@ export default {
 					this.usuarios = resp.data
 					console.log(this.usuarios)
 				})
-		}
+		},
+        addProducts(item) {
+            this.$store.state.itens.push(item)
+        }
     }
 }
 </script>

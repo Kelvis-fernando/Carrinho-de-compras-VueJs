@@ -17,6 +17,10 @@ Vue.use(IconsPlugin)
 
 Vue.config.productionTip = false
 
+Vue.filter('dinheiro', valor => {
+	return `R$ ${parseFloat(valor).toFixed(2)}`.replace('.', ',')
+})
+
 new Vue({
     router,
     store,

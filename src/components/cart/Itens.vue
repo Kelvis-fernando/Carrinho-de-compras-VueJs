@@ -8,8 +8,9 @@
         <div class="card-body">
             <h5 class="card-title text-center">{{item.produto}}</h5>
             <p class="card-text text-center">{{ item.categoria }}</p>
-            <p class="card-text text-center">R$: {{ item.valor }}</p>
-            <button @click="addProducts(item)" class="btn" style="background-color: #679890; color: #fff;">Adicionar</button>
+            <p class="card-text text-center">R$: {{ item.valor | dinheiro }}</p>
+            <button @click="sum">+</button><span>{{qtd}}</span><button @click="less">-</button>
+            <button @click="addProducts(item), addQtd" class="btn" style="background-color: #679890; color: #fff;">Adicionar</button>
         </div>
     </div>
 </div>
@@ -23,11 +24,11 @@ export default {
         return {
             itens: [],
             id: null,
-            qtd: 0,
+            qtd: 1,
             item: {
                 produto: '',
                 categoria: '',
-                valor: 0
+                valor: 0,
             }
         }
     },
@@ -49,6 +50,15 @@ export default {
 		},
         addProducts(item) {
             this.$store.state.itens.push(item)
+        },
+        sum() {
+            this.qtd += 1
+        },
+        less() {
+            this.qtd -= 1
+        },
+        addQtd() {
+            this.item.push(this.qtd)
         }
     }
 }
@@ -77,7 +87,7 @@ export default {
 
     .adjust-card {
         width: 14rem;
-        margin: 80px;
+        margin: 50px;
     }
 
     .add-new-item {

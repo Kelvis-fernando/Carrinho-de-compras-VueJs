@@ -12,7 +12,7 @@
         </div>
         <label for="desconto">Desconto</label>
         <input type="text" id="desconto" class="w-25 m-2" />
-        <h3 class="my-4">Valor Total: R$: {{ totalValue }}</h3>
+        <h3 class="my-4">Valor Total: R$: {{ totalValue | dinheiro }}</h3>
         <b-button variant="outline-success" class="m-3">Fechar Pedido</b-button>
         <b-button @click="clearCart" variant="outline-warning">Limpar Carrinho</b-button>
       </b-sidebar>

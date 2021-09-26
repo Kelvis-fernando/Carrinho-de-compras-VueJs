@@ -13,7 +13,7 @@
         <label for="desconto">Desconto</label>
         <input type="text" id="desconto" class="w-25 m-2" />
         <h3 class="my-4">Valor Total: {{ totalValue | dinheiro }}</h3>
-        <b-button variant="outline-success" class="m-3">Fechar Pedido</b-button>
+        <b-button @click="finishOrder" variant="outline-success" class="m-3">Fechar Pedido</b-button>
         <b-button @click="clearCart" variant="outline-warning">Limpar Carrinho</b-button>
       </b-sidebar>
     </div>
@@ -37,6 +37,9 @@ export default {
     methods: {
       clearCart() {
         this.$store.state.itens = []
+      },
+      finishOrder() {
+        return console.log(this.Itens);
       }
     }
   }

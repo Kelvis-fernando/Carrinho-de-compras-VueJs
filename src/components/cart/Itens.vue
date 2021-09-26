@@ -8,7 +8,6 @@
             <h5 class="card-title text-center">{{item.produto}}</h5>
             <p class="card-text text-center">{{ item.categoria }}</p>
             <p class="card-text text-center">{{ item.valor | dinheiro }}</p>
-            <button @click="sum">+</button><span>{{qtd}}</span><button @click="less">-</button>
             <button @click="addProducts(item), addQtd" class="btn" style="background-color: #679890; color: #fff;">Adicionar</button>
         </div>
     </div>
@@ -42,12 +41,6 @@ export default {
         addProducts(item) {
             this.$store.state.itens.push(item)
         },
-        sum() {
-            this.qtd += 1
-        },
-        less() {
-            this.qtd -= 1
-        },
         addQtd() {
             this.item.push(this.qtd)
         }
@@ -58,7 +51,6 @@ export default {
                 this.itens = resp.data
                 console.log(this.itens)
             })
-            .then(alert('Item recebido'))
     }
     
 }

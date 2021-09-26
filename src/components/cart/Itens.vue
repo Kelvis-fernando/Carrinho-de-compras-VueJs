@@ -1,6 +1,5 @@
 <template>
 <div id="itens">
-    <button @click="getProducts" class="btn1 btn" style="background-color: #679890; color: #fff">Carregar Itens</button> <br>
     <router-link class=" btn1 btn add-new-item" style="background-color: #679890; color: #fff" to="/adicionar">Adicionar Item +</router-link> <br>
     <div class="card"></div>
     <div class="card adjust-card" v-for="(item, id) in itens" :key="id">
@@ -33,14 +32,6 @@ export default {
         }
     },
     methods: {
-        getProducts() {
-            this.$http.get(`itens.json`)
-                .then(resp => {
-                    this.itens = resp.data
-                    console.log(this.itens)
-                })
-                .then(alert('Item recebido'))
-        },
         obterUsuarios() {
 			this.$http.get('usuarios.json')
 				.then(resp => {
@@ -61,6 +52,15 @@ export default {
             this.item.push(this.qtd)
         }
     },
+    created: function() {
+        this.$http.get(`itens.json`)
+            .then(resp => {
+                this.itens = resp.data
+                console.log(this.itens)
+            })
+            .then(alert('Item recebido'))
+    }
+    
 }
 </script>
 
@@ -91,6 +91,6 @@ export default {
     }
 
     .add-new-item {
-        margin-left: 150px;
+        margin-left: 50px;
     }
 </style>

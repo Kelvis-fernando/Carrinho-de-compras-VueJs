@@ -60,7 +60,7 @@ export default {
         addQtd() {
             this.item.push(this.qtd)
         }
-    }
+    },
 }
 </script>
 

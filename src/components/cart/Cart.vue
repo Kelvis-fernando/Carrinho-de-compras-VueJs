@@ -11,7 +11,7 @@
           <b-table :items="itens"></b-table>
         </div>
         <label for="desconto">Desconto</label>
-        <input type="text" id="desconto" class="w-25 m-2" />
+        <span><input type="text" id="desconto" v-model="discount" class="w-25 m-2" /><button @click="setDiscount(discount)" class="btn" style="background-color: #679890; color: #fff">Aplicar</button></span>
         <h3 class="my-4">Valor Total: {{ totalValue | dinheiro }}</h3>
         <b-button @click="finishOrder" variant="outline-success" class="m-3">Fechar Pedido</b-button>
         <b-button @click="clearCart" variant="outline-warning">Limpar Carrinho</b-button>
@@ -25,21 +25,32 @@
 import Itens from '@/components/cart/Itens'
 export default {
     components: {Itens},
+    data() {
+      return {
+        discount: 0
+      }
+    },
     computed: {
       totalValue() {
         return this.itens.map(p => 1 * p.valor)
-          .reduce((total, atual) => total + atual, 0)
+          .reduce((total, atual) => {
+              return total + atual
+          }, 0)
       },
       itens() {
-        return this.$store.state.itens
+        return this.$store.state.itens;
       }
     },
     methods: {
       clearCart() {
-        this.$store.state.itens = []
+        this.$store.state.itens = [];
       },
       finishOrder() {
         return console.log(this.Itens);
+      },
+      setDiscount(value) {
+        console.log(this.totalValue - value);
+        return this.totalValue - value;
       }
     }
   }

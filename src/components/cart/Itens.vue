@@ -1,6 +1,7 @@
 <template>
 <div id="itens">
     <router-link class=" btn1 btn add-new-item" style="background-color: #679890; color: #fff" to="/adicionar">Adicionar Item +</router-link> <br>
+    <router-link class=" btn2 btn order" style="background-color: #679890; color: #fff" to="/pedidos">Meus Pedidos</router-link> <br>
     <div class="card"></div>
     <div class="card adjust-card" v-for="(item, id) in itens" :key="id">
         <img src="@/assets/Itens/default.jpg" class="card-img-top" alt="Produtos">
@@ -71,6 +72,13 @@ export default {
         margin-left: 20px;
     }
 
+    .btn2 {
+        display: flex;
+        align-content: center;
+        justify-content: center;
+        position: absolute;
+    }
+
     .btn {
         display: flex;
         align-content: center;
@@ -84,5 +92,8 @@ export default {
 
     .add-new-item {
         margin-left: 50px;
+    }
+    .order {
+        margin-left: 200px;
     }
 </style>

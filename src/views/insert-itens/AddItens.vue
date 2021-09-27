@@ -45,7 +45,7 @@
         ></b-form-input>
       </b-form-group>
 
-      <b-button @click="enviar" type="submit" class="my-3" style="background-color: #679890; color: #fff; border: none;">Adicionar</b-button>
+      <b-button @click="registrar" type="submit" class="my-3" style="background-color: #679890; color: #fff; border: none;">Adicionar</b-button>
     </b-form>
   </div>
 </template>
@@ -65,24 +65,24 @@ export default {
     enviar() {
       this.$http.post(`itens.json`, this.itens)
         .then(() => {
-          this.limpar()
-        })
+          this.limpar();
+        });
     },
     limpar() {
-      this.itens.produto = ''
-      this.itens.valor = ''
-      this.itens.categoria = ''
+      this.itens.produto = '';
+      this.itens.valor = '';
+      this.itens.categoria = '';
     },
-    // registrar() {
-    //   this.$http.post(`cadastro.json`, this.itens)
-    //     .then(() => {
-    //       this.limpar()
-		// 			this.mensagens.push({
-		// 				texto: 'Operação realizada com sucesso',
-		// 				tipo: 'success'
-		// 			})
-    //     })
-    // }
+    registrar() {
+      this.$http.post('itens.json', this.itens)
+        .then(() => {
+          this.limpar();
+					this.mensagens.push({
+						texto: 'Operação realizada com sucesso',
+						tipo: 'success'
+					});
+        })
+    }
   }
 };
 </script>

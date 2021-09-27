@@ -35,7 +35,7 @@ export default {
         return this.itens.map(p => 1 * p.valor)
           .reduce((total, atual) => {
               return total + atual
-          }, 0)
+          }, 0);
       },
       itens() {
         return this.$store.state.itens;

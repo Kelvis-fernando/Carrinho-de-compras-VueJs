@@ -22,12 +22,13 @@
 </template>
 
 <script>
-import Itens from '@/components/cart/Itens'
+import Itens from '../cart/itens/Itens.vue'
 export default {
     components: {Itens},
     data() {
       return {
-        discount: 0
+        discount: 0,
+        itensFinish: []
       }
     },
     computed: {
@@ -46,7 +47,8 @@ export default {
         this.$store.state.itens = [];
       },
       finishOrder() {
-        return console.log(this.Itens);
+        console.log(this.$store.state.itens);
+        return this.$store.state.itensFinish = this.$store.state.itens;
       },
       setDiscount(value) {
         console.log(this.totalValue - value);

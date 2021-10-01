@@ -6,12 +6,13 @@ Vue.use(Vuex)
 export default new Vuex.Store({
     state: {
         itens: [],
-        order: []
+        order: [],
+        itensFinish: []
     },
     mutations: {
         adicionarProduto(state, payload) {
             state.produtos.push(payload)
         }
     },
-    
+
 })

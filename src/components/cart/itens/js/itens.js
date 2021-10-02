@@ -1,4 +1,7 @@
+import SideBar  from '../../../../layout/SideBar';
+
 export default {
+    components: {SideBar},
     data() {
         return {
             itens: [],

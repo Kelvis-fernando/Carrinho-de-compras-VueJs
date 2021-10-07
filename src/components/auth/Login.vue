@@ -40,19 +40,6 @@
 <script>
 import SideAuth from '@/components/auth/SideAuth'
 
-// Initialize the FirebaseUI Widget using Firebase.
-let ui = new firebaseui.auth.AuthUI(firebase.auth());
-
-function login() {
-  ui.start('#firebaseui-auth-container', {
-  signInOptions: [
-    firebase.auth.EmailAuthProvider.PROVIDER_ID
-  ],
-  // Other config options...
-});
-} 
-
-
 export default {
   components: {SideAuth},
     data() {

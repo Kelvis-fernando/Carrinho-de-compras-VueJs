@@ -5,14 +5,21 @@
         <tr>
           <th scope="col">Categoria</th>
           <th scope="col">Valor Total</th>
-          <th scope="col">Acao</th>
+          <th scope="col">Ação</th>
         </tr>
       </thead>
       <tbody>
         <tr v-for="orders in getOrders()" :key="orders">
           <td>{{orders.categoria}}</td>
           <td>{{orders.valor | dinheiro}}</td>
-          <td>Editar | Deletar</td>
+          <td>
+              <button class="btn btn-outline-info action-btn">
+                <i class="bi bi-pencil-fill"></i>Editar
+              </button>
+            <button class="btn btn-outline-danger action-btn">
+              <i class="bi bi-trash-fill"></i>Deletar
+            </button>
+          </td>
         </tr>
       </tbody>
     </table>
@@ -43,4 +50,7 @@ created: function() {
 </script>
 
 <style scoped>
+.action-btn {
+  margin: 0px 5px;
+}
 </style>

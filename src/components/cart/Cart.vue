@@ -47,8 +47,8 @@ export default {
         this.$store.state.itens = [];
       },
       finishOrder() {
-        console.log(this.$store.state.itens);
-        return this.$store.state.itensFinish = this.$store.state.itens;
+        this.$store.state.itensFinish = this.$store.state.itens;
+        return this.$store.state.itens = [];
       },
       setDiscount(value) {
         console.log(this.totalValue - value);

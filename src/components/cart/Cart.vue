@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import Itens from '../cart/itens/Itens.vue'
+import Itens from '../cart/Itens.vue'
 export default {
     components: {Itens},
     data() {

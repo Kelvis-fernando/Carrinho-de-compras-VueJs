@@ -1,6 +1,6 @@
 <template>
   <div id="add-itens">
-    <b-form>
+    <b-form class="form">
       <b-form-group
         id="input-group-1"
         label="Produtos"
@@ -11,7 +11,7 @@
           type="text"
           placeholder="Café*"
           required
-          class="w-25"
+          class="w-50"
           v-model="itens.produto"
         ></b-form-input>
       </b-form-group>
@@ -26,7 +26,7 @@
           type="text"
           placeholder="00,00*"
           required
-          class="w-25"
+          class="w-50"
           v-model="itens.valor"
         ></b-form-input>
       </b-form-group>
@@ -40,12 +40,12 @@
           type="text"
           placeholder="Bebida*"
           required
-          class="w-25"
+          class="w-50"
           v-model="itens.categoria"
         ></b-form-input>
       </b-form-group>
 
-      <b-button @click="registrar" type="submit" class="my-3" style="background-color: #679890; color: #fff; border: none;">Adicionar</b-button>
+      <b-button @click="registrar" type="submit" class="my-3 w-50" style="background-color: #679890; color: #fff; border: none;">Adicionar</b-button>
     </b-form>
   </div>
 </template>
@@ -88,4 +88,8 @@ export default {
 </script>
 
 <style scoped>
+.form {
+  margin-top: 100px;
+  margin-left: 350px;
+}
 </style>

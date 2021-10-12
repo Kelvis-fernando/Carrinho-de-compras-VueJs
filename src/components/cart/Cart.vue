@@ -56,7 +56,7 @@ export default {
       },
       setDiscount(value) {
         console.log(this.totalValue - value);
-        return this.totalValue - value;
+        this.totalValue - value;
       }
     }
   }

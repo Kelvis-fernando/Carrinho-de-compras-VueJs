@@ -39,7 +39,7 @@ methods: {
       return this.$store.state.itensFinish
     },
     seila() {
-      console.log(this.getOrders())
+      console.log(this.getOrders());
     }
 },
 created: function() {

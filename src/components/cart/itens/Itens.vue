@@ -69,7 +69,6 @@ export default {
   created: function () {
     this.$http.get(`itens.json`).then((resp) => {
       this.itens = resp.data;
-      console.log(this.itens);
     });
   },
 };

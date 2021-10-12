@@ -7,9 +7,6 @@ import './plugins/axios'
 
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 
-
-
-
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import './plugins/bootstrap-vue'
@@ -21,7 +18,7 @@ Vue.use(IconsPlugin)
 Vue.config.productionTip = false
 
 Vue.filter('dinheiro', valor => {
-	return `R$ ${parseFloat(valor).toFixed(2)}`.replace('.', ',')
+    return `R$ ${parseFloat(valor).toFixed(2)}`.replace('.', ',')
 })
 
 new Vue({

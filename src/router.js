@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import router from 'vue-router'
 
-import Login from '@/components/auth/Login'
 import Register from '@/components/auth/Register'
 import Products from '@/views/cart/Products'
 import InsertItens from '@/views/insert-itens/AddItens'
@@ -13,7 +12,7 @@ export default new router({
     mode: 'history',
     routes: [{
             path: '/',
-            component: Login
+            component: Products
         },
         {
             path: '/register',
@@ -31,6 +30,6 @@ export default new router({
             path: '/Pedidos',
             component: Orders
         }
-        
+
     ]
 })

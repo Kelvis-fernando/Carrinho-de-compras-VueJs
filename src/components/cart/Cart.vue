@@ -47,6 +47,10 @@ export default {
         this.$store.state.itens = [];
       },
       finishOrder() {
+        this.$http.post('order.json', this.$store.state.itens)
+          .then((resp) => {
+            console.log(resp);
+          })
         this.$store.state.itensFinish = this.$store.state.itens;
         return this.$store.state.itens = [];
       },

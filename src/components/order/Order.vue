@@ -9,7 +9,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="orders in getOrders()" :key="orders">
+        <tr v-for="orders in order" :key="orders">
           <td>{{orders.categoria}}</td>
           <td>{{orders.valor | dinheiro}}</td>
           <td>
@@ -30,12 +30,12 @@
 export default {
 data() {
   return {
-    id: 0
+    id: 0,
+    order: {}
   }
 },
 methods: {
     getOrders() {
-      console.log(this.$store.state.itensFinish);
       return this.$store.state.itensFinish
     },
     seila() {
@@ -43,7 +43,11 @@ methods: {
     }
 },
 created: function() {
-  console.log(this.$store.state.itensFinish);
+  this.$http.get('order.json')
+  .then((data) => {
+    this.order = data.data;
+    console.log();
+  })
   return this.$store.state.itensFinish
 }
 }

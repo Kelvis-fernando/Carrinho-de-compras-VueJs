@@ -40,82 +40,79 @@
 
 <script>
 export default {
-    data() {
-        return {
-            itens: [],
-            id: null,
-            qtd: 1,
-            item: {
-                produto: '',
-                categoria: '',
-                valor: 0,
-            }
-        }
+  data() {
+    return {
+      itens: [],
+      id: null,
+      qtd: 1,
+      item: {
+        produto: "",
+        categoria: "",
+        valor: 0,
+      },
+    };
+  },
+  methods: {
+    obterUsuarios() {
+      this.$http.get("usuarios.json").then((resp) => {
+        this.usuarios = resp.data;
+        console.log(this.usuarios);
+      });
     },
-    methods: {
-        obterUsuarios() {
-            this.$http.get('usuarios.json')
-                .then(resp => {
-                    this.usuarios = resp.data
-                    console.log(this.usuarios)
-                })
-        },
-        addProducts(item) {
-            this.$store.state.itens.push(item)
-        },
-        addQtd() {
-            this.item.push(this.qtd)
-        }
+    addProducts(item) {
+      this.$store.state.itens.push(item);
     },
-    created: function() {
-        this.$http.get(`itens.json`)
-            .then(resp => {
-                this.itens = resp.data
-                console.log(this.itens)
-            })
-    }
-
-}
+    addQtd() {
+      this.item.push(this.qtd);
+    },
+  },
+  created: function () {
+    this.$http.get(`itens.json`).then((resp) => {
+      this.itens = resp.data;
+      console.log(this.itens);
+    });
+  },
+};
 </script>
 
 <style>
 #itens {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
 .btn1 {
-    display: flex;
-    align-content: center;
-    justify-content: center;
-    position: absolute;
-    margin-left: 20px;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  position: absolute;
+  margin-left: 20px;
 }
 
 .btn2 {
-    display: flex;
-    align-content: center;
-    justify-content: center;
-    position: absolute;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  position: absolute;
 }
 
 .btn {
-    display: flex;
-    align-content: center;
-    justify-content: center;
+  display: flex;
+  align-content: center;
+  justify-content: center;
 }
 
 .adjust-card {
-    width: 14rem;
-    margin: 50px;
+  width: 14rem;
+  margin: 50px;
 }
 
 .add-new-item {
-    margin-left: 50px;
+  margin-left: 50px;
 }
 
 .order {
-    margin-left: 200px;
+  margin-left: 200px;
 }
 </style>

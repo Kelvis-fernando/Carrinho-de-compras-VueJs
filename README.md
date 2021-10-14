@@ -13,6 +13,10 @@ Este projeto foi criado para ser um carrinho de compras e controle de pedidos pa
 
 </div>
 
+## Installar o Projeto
+```
+https://github.com/Kelvis-fernando/Carrinho-de-compras.git
+
 ## Project setup
 ```
 npm install
